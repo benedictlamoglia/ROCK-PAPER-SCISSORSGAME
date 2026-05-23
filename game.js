@@ -1,7 +1,34 @@
 
+let score = JSON.parse(localStorage.getItem('score')) || {
+      wins: 0,
+      losses: 0,
+      ties: 0
+}
+
+function resetScore() { 
+    score = {
+       wins: 0,
+      losses: 0,
+      ties: 0
+    }
+    localStorage.removeItem('score');
+
+    
+    showPopup(
+        "🔄 Score Reset",
+        
+        `Wins: ${score.wins}<br>
+         Losses: ${score.losses}<br>
+         Ties: ${score.ties}`
+
+      );
+}
+
+
 function random1 () {
  const randomNumber = Math.random();
-       
+
+         
     let userChoice = 'Rock';
     let computerChoice = ''; 
  if (randomNumber >= 0 && randomNumber < 1 / 3) {
@@ -14,8 +41,6 @@ function random1 () {
     console.log('Ang random number ay mas mataas sa 2/3');
     computerChoice = 'Scissors';
  }
-   alert(` Result:  ${computerChoice} ang pinili ng computer`);
-
 
    let Result = '';
 
@@ -27,7 +52,26 @@ function random1 () {
         Result = 'Win';
    }
 
-   alert(`You Pick ${userChoice} and the computer pick ${computerChoice} and the result is you ${Result}`);
+      if (Result === 'Win') {
+    score.wins += 1;
+} else if (Result === 'Lose') {
+      score.losses += 1;
+} else if (Result === 'Tie') { 
+      score.ties += 1;
+}
+   localStorage.setItem('score', JSON.stringify(score));
+showPopup(
+    "🎮 Game Result",
+    
+    `You picked ${userChoice}<br>
+     Computer picked ${computerChoice}<br><br>
+
+     Result: ${Result}<br><br>
+
+     Wins: ${score.wins}<br>
+     Losses: ${score.losses}<br>
+     Ties: ${score.ties}`
+);
  }
 
 function random2 () {
@@ -44,8 +88,6 @@ function random2 () {
     console.log('Ang random number ay mas mataas sa 2/3');
     computerChoice = 'Scissors';
  }
-   alert(` Result:  ${computerChoice} ang pinili ng computer`);
-
 
    let Result = '';
 
@@ -56,14 +98,35 @@ function random2 () {
    } else if (computerChoice === 'Rock') {
         Result = 'Win';
    }
-   alert(`You Pick ${userChoice} and the computer pick ${computerChoice} and the result is you${Result}`);
+  
+
+      if (Result === 'Win') {
+    score.wins += 1;
+} else if (Result === 'Lose') {
+      score.losses += 1;
+} else if (Result === 'Tie') { 
+      score.ties += 1;
+}
+   localStorage.setItem('score', JSON.stringify(score));
+showPopup(
+    "🎮 Game Result",
+    
+    `You picked ${userChoice}<br>
+     Computer picked ${computerChoice}<br><br>
+
+     Result: ${Result}<br><br>
+
+     Wins: ${score.wins}<br>
+     Losses: ${score.losses}<br>
+     Ties: ${score.ties}`
+);
 }
 
 
 function random3() {
  const randomNumber = Math.random();
 
-    let userchoice = 'Scissors';
+    let userChoice = 'Scissors';
 
     let computerChoice = ''; 
  if (randomNumber >= 0 && randomNumber < 1 / 3) {
@@ -76,7 +139,6 @@ function random3() {
     console.log('Ang random number ay mas mataas sa 2/3');
     computerChoice = 'Scissors';
  }
-   alert(` Result:  ${computerChoice} ang pinili ng computer`);
 
 
    let Result = '';
@@ -88,5 +150,46 @@ function random3() {
    } else if (computerChoice === 'Paper') {
         Result = 'Win';
    }
-   alert(`You ${userchoice} and the computer pick ${computerChoice} and the result is you ${Result}`);
+   
+   
+ if (Result === 'Win') {
+    score.wins += 1;
+} else if (Result === 'Lose') {
+      score.losses += 1;
+} else if (Result === 'Tie') { 
+      score.ties += 1;
 }
+
+showPopup(
+    "🎮 Game Result",
+    
+    `You picked ${userChoice}<br>
+     Computer picked ${computerChoice}<br><br>
+
+     Result: ${Result}<br><br>
+
+     Wins: ${score.wins}<br>
+     Losses: ${score.losses}<br>
+     Ties: ${score.ties}`
+);
+
+
+}
+
+
+function showPopup(title, message) {
+
+    document.getElementById("popup").style.display = "flex";
+
+    document.getElementById("popup-title").innerHTML = title;
+
+    document.getElementById("popup-message").innerHTML = message;
+}
+
+function closePopup() {
+
+    document.getElementById("popup").style.display = "none";
+
+}
+
+ 

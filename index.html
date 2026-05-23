@@ -1,33 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="stylesheet" href="game.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <link rel="stylesheet" href="game.css">
+
+    <title>Rock Paper Scissors</title>
 </head>
+
 <body>
-    
+
     <div class="container">
-    <h1>🎮 Welcome to Rock Paper Scissors</h1>
-    <p class="subtitle">Choose your move and beat the computer!</p>
 
-    <div class="buttons">
-      <button class="rock" onclick="random1()">
-        ✊<br>Rock
-      </button>
+        <h1>🎮 Welcome to Rock Paper Scissors</h1>
 
-      <button class="paper" onclick="random2()">
-        ✋<br>Paper
-      </button>
+        <p class="subtitle">
+            Choose your move and beat the computer!
+        </p>
 
-      <button class="scissors" onclick="random3()">
-        ✌️<br>Scissors
-      </button>
+        <!-- Buttons -->
+        <div class="buttons">
+
+            <button class="rock" onclick="random1()">
+                ✊ <br> Rock
+            </button>
+
+            <button class="paper" onclick="random2()">
+                ✋ <br> Paper
+            </button>
+
+            <button class="scissors" onclick="random3()">
+                ✌️ <br> Scissors
+            </button>
+
+            <button class="reset" onclick="resetScore()">
+                Reset Score
+            </button>
+
+        </div>
+
     </div>
 
+    <!-- Popup -->
+    <div class="popup" id="popup">
 
+        <div class="popup-content">
+
+            <h2 id="popup-title">
+                Result
+            </h2>
+
+            <p id="popup-message">
+            </p>
+
+            <button onclick="closePopup()">
+                Close
+            </button>
+
+        </div>
+
+    </div>
 
     <script src="game.js"></script>
+
 </body>
+
 </html>
